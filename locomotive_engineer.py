@@ -36,11 +36,9 @@ def add_missing_stops(route, **kwargs):
     route["stops"] = list_of_stops
     return route
 
-print(add_missing_stops({"from": "New York", "to": "Miami"},
+"""###print(add_missing_stops({"from": "New York", "to": "Miami"},
                       stop_1="Washington, DC", stop_2="Charlotte", stop_3="Atlanta",
                       stop_4="Jacksonville", stop_5="Orlando"))
-
-""" {"from": "New York", "to": "Miami", "stops": ["Washington, DC", "Charlotte", "Atlanta", "Jacksonville", "Orlando"]}
 """
 
 def extend_route_information(route, more_route_information):
@@ -50,8 +48,23 @@ def extend_route_information(route, more_route_information):
     :param more_route_information: dict -  extra route information.
     :return: dict - extended route information.
     """
-    pass
 
+    return {**route, **more_route_information}
+
+### print(extend_route_information({"from": "Berlin", "to": "Hamburg"}, {"length": "100", "speed": "50"}))
+
+"""def fix_wagon_depot(wagons_rows):
+    ###Fix the list of rows of wagons.
+
+    ###:param wagons_rows: list[list[tuple]] - the list of rows of wagons.
+    ###:return: list[list[tuple]] - list of rows of wagons.
+    
+    zipped = zip(*wagons_rows)
+    listed = []
+    for item in zipped:
+        listed_item = list(item)
+        listed.append(listed_item)
+    return listed"""
 
 def fix_wagon_depot(wagons_rows):
     """Fix the list of rows of wagons.
@@ -59,4 +72,11 @@ def fix_wagon_depot(wagons_rows):
     :param wagons_rows: list[list[tuple]] - the list of rows of wagons.
     :return: list[list[tuple]] - list of rows of wagons.
     """
-    pass
+    
+    return [list(item)for item in zip(*wagons_rows)]
+
+print(fix_wagon_depot([
+                    [(2, "red"), (4, "red"), (8, "red")],
+                    [(5, "blue"), (9, "blue"), (13,"blue")],
+                    [(3, "orange"), (7, "orange"), (11, "orange")],
+                    ]))
