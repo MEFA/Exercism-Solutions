@@ -44,7 +44,7 @@ def check_drinks(drink_name, drink_ingredients):
     
 
 
-print(check_drinks('Honeydew Cucumber', ['honeydew', 'coconut water', 'mint leaves', 'lime juice', 'salt', 'english cucumber']))
+###print(check_drinks('Honeydew Cucumber', ['honeydew', 'coconut water', 'mint leaves', 'lime juice', 'salt', 'english cucumber']))
 
 
 def categorize_dish(dish_name, dish_ingredients):
@@ -59,9 +59,19 @@ def categorize_dish(dish_name, dish_ingredients):
     All dishes will "fit" into one of the categories imported from `sets_categories_data.py`
 
     """
+    from sets_categories_data import VEGAN, VEGETARIAN, PALEO, KETO, OMNIVORE
+    categories = [
+    (VEGAN, "VEGAN"),
+    (VEGETARIAN, "VEGETARIAN"),
+    (PALEO, "PALEO"),
+    (KETO, "KETO"),
+    (OMNIVORE, "OMNIVORE")
+    ]
+    for category_set, category_name in categories:
+        if dish_ingredients.issubset(category_set):
+            return f"{dish_name}: {category_name}"
 
-    pass
-
+print(categorize_dish('Shrimp Bacon and Crispy Chickpea Tacos with Salsa de Guacamole', {'shrimp', 'bacon', 'avocado', 'chickpeas', 'fresh tortillas', 'sea salt', 'guajillo chile', 'slivered almonds', 'olive oil', 'butter', 'black pepper', 'garlic', 'onion'}))
 
 def tag_special_ingredients(dish):
     """Compare `dish` ingredients to `SPECIAL_INGREDIENTS`.
