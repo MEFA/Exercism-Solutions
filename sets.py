@@ -71,7 +71,7 @@ def categorize_dish(dish_name, dish_ingredients):
         if dish_ingredients.issubset(category_set):
             return f"{dish_name}: {category_name}"
 
-print(categorize_dish('Shrimp Bacon and Crispy Chickpea Tacos with Salsa de Guacamole', {'shrimp', 'bacon', 'avocado', 'chickpeas', 'fresh tortillas', 'sea salt', 'guajillo chile', 'slivered almonds', 'olive oil', 'butter', 'black pepper', 'garlic', 'onion'}))
+### print(categorize_dish('Shrimp Bacon and Crispy Chickpea Tacos with Salsa de Guacamole', {'shrimp', 'bacon', 'avocado', 'chickpeas', 'fresh tortillas', 'sea salt', 'guajillo chile', 'slivered almonds', 'olive oil', 'butter', 'black pepper', 'garlic', 'onion'}))
 
 def tag_special_ingredients(dish):
     """Compare `dish` ingredients to `SPECIAL_INGREDIENTS`.
@@ -84,7 +84,11 @@ def tag_special_ingredients(dish):
     SPECIAL_INGREDIENTS constant imported from `sets_categories_data.py`.
     """
 
-    pass
+    from sets_categories_data import SPECIAL_INGREDIENTS
+    dish_special_ingredients = SPECIAL_INGREDIENTS.intersection(dish[1])
+    return dish[0], dish_special_ingredients
+
+### print(tag_special_ingredients(('Arugula and Roasted Pork Salad', ['pork tenderloin', 'arugula', 'pears', 'blue cheese', 'pine nuts', 'balsamic vinegar', 'onions', 'black pepper'])))    
 
 
 def compile_ingredients(dishes):
@@ -95,9 +99,18 @@ def compile_ingredients(dishes):
 
     This function should return a `set` of all ingredients from all listed dishes.
     """
+    new_set = set()
+    for item in dishes:
+        new_set = new_set.union(item)
+    return new_set
 
-    pass
 
+### dishes = [ {'tofu', 'soy sauce', 'ginger', 'corn starch', 'garlic', 'brown sugar', 'sesame seeds', 'lemon juice'},
+           {'pork tenderloin', 'arugula', 'pears', 'blue cheese', 'pine nuts',
+           'balsamic vinegar', 'onions', 'black pepper'},
+           {'honeydew', 'coconut water', 'mint leaves', 'lime juice', 'salt', 'english cucumber'}]
+
+### print(compile_ingredients(dishes))
 
 def separate_appetizers(dishes, appetizers):
     """Determine which `dishes` are designated `appetizers` and remove them.
