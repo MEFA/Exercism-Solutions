@@ -105,10 +105,10 @@ def compile_ingredients(dishes):
     return new_set
 
 
-### dishes = [ {'tofu', 'soy sauce', 'ginger', 'corn starch', 'garlic', 'brown sugar', 'sesame seeds', 'lemon juice'},
+"""dishes = [ {'tofu', 'soy sauce', 'ginger', 'corn starch', 'garlic', 'brown sugar', 'sesame seeds', 'lemon juice'},
            {'pork tenderloin', 'arugula', 'pears', 'blue cheese', 'pine nuts',
            'balsamic vinegar', 'onions', 'black pepper'},
-           {'honeydew', 'coconut water', 'mint leaves', 'lime juice', 'salt', 'english cucumber'}]
+           {'honeydew', 'coconut water', 'mint leaves', 'lime juice', 'salt', 'english cucumber'}]"""
 
 ### print(compile_ingredients(dishes))
 
@@ -122,9 +122,9 @@ def separate_appetizers(dishes, appetizers):
     The function should return the list of dish names with appetizer names removed.
     Either list could contain duplicates and may require de-duping.
     """
+    return set(dishes).difference(appetizers)
 
-    pass
-
+from sets_categories_data import example_dishes, EXAMPLE_INTERSECTION
 
 def singleton_ingredients(dishes, intersection):
     """Determine which `dishes` have a singleton ingredient (an ingredient that only appears once across dishes).
@@ -140,5 +140,15 @@ def singleton_ingredients(dishes, intersection):
 
     The function should return a `set` of ingredients that only appear in a single dish.
     """
+    union_of_all_ingredients = set()
+    for dish in dishes:
+        union_of_all_ingredients = union_of_all_ingredients.union(dish)
 
-    pass
+    singletons = union_of_all_ingredients - intersection
+    return singletons
+
+
+
+
+
+
