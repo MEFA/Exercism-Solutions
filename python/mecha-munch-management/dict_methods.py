@@ -8,9 +8,13 @@ def add_item(current_cart, items_to_add):
     :param items_to_add: iterable - items to add to the cart.
     :return: dict - the updated user cart dictionary.
     """
-
-    pass
-
+    current_cart = current_cart.copy()
+    for item in items_to_add:
+        if item in current_cart:
+            current_cart[item] += 1
+        else:
+            current_cart[item] = 1
+    return current_cart
 
 def read_notes(notes):
     """Create user cart from an iterable notes entry.
@@ -18,7 +22,7 @@ def read_notes(notes):
     :param notes: iterable of items to add to cart.
     :return: dict - a user shopping cart dictionary.
     """
-
+    
     pass
 
 
